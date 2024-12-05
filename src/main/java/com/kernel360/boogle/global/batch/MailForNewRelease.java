@@ -3,8 +3,6 @@ package com.kernel360.boogle.global.batch;
 
 import com.kernel360.boogle.book.db.BookEntity;
 import com.kernel360.boogle.book.db.BookRepository;
-import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -17,10 +15,12 @@ import java.util.Properties;
 
 @Component
 public class MailForNewRelease {
-    @Value("${mail.batch.email}")
+    // Application.yaml에 인자(mail.batch.email)를 추가하여 아래 Annotation을 주석을 해제하세요.
+    // @Value("${mail.batch.email}")
     private String userEmail;
 
-    @Value("${mail.batch.password}")
+    // Application.yaml에 인자(mail.batch.password)를 추가하여 아래 Annotation을 주석을 해제하세요.
+    // @Value("${mail.batch.password}")
     private String userPassword;
     static final String smtpHost = "smtp.gmail.com";
     static final int tlsPort = 587;
@@ -56,10 +56,9 @@ public class MailForNewRelease {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(userEmail));
 
-
+            // 수신자 메일 목록을 아래에 작성
             String[] recipientAddresses = {
-                    "2018190529@korea.ac.kr",
-                    "rosskysoss@gmail.com"
+                "reciver@gmail.com"
             };
 
             InternetAddress[] recipientInternetAddresses = new InternetAddress[recipientAddresses.length];
